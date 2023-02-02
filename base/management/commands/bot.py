@@ -8,6 +8,14 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from base.models import Setting, SignalResult, Signal
 from django.core.management.base import BaseCommand
 
+import os
+import django
+
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rest.settings')
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+django.setup()
+
 setting = Setting.objects.get(id=1)
 bot = Bot(token=setting.channel_for_bot)
 dp = Dispatcher(bot, storage=MemoryStorage())

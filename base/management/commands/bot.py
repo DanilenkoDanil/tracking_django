@@ -44,9 +44,9 @@ async def process_start_command(message: types.Message, state: FSMContext):
     time = command_list[3]
     signals = SignalResult.objects.filter()
     for signal in signals:
-        balance += (0.25 * balance) * ((100 + (signal.price_change * leverage)) / 100)
+        balance += ((0.25 * balance) * ((100 + (signal.price_change * leverage)) / 100) - 25)
     print(command_list)
-    await message.reply(f"Balance - {balance}!", parse_mode='Markdown')
+    await message.reply(f"Balance - {round(balance, 2)}", parse_mode='Markdown')
 
 
 class Command(BaseCommand):

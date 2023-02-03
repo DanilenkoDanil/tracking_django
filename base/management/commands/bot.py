@@ -43,7 +43,7 @@ async def process_start_command(message: types.Message, state: FSMContext):
     leverage = float(command_list[2])
     time = command_list[3]
     if len(command_list) >= 5:
-        source = command_list[3]
+        source = command_list[4]
     else:
         source = None
     if source is not None:

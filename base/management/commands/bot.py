@@ -42,7 +42,14 @@ async def process_start_command(message: types.Message, state: FSMContext):
     balance = float(command_list[1])
     leverage = float(command_list[2])
     time = command_list[3]
-    signals = SignalResult.objects.filter()
+    if len(command_list) >= 5:
+        source = command_list[3]
+    else:
+        source = None
+    if source is not None:
+        signals = SignalResult.objects.filter(source=source)
+    else:
+        signals = SignalResult.objects.filter()
     for signal in signals:
         balance += ((0.25 * balance) * ((100 + (signal.price_change * leverage)) / 100) - 0.25 * balance)
     print(command_list)

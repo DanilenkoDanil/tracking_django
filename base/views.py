@@ -36,8 +36,6 @@ class SendSignalResult(generics.RetrieveAPIView):
             type=signal_type,
             price=price,
             source=source,
-            signal=signal,
             price_change=price_change,
         )
         return Response(f"signal - {signal_result.id}", status=status.HTTP_200_OK)
-

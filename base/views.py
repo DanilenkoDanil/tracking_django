@@ -27,13 +27,15 @@ class SendSignalResult(generics.RetrieveAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         name = request.query_params.get('name')
+        signal_type = request.query_params.get('type')
+        price = request.query_params.get('price')
+        source = request.query_params.get('source')
         price_change = request.query_params.get('price_change')
-        signal = Signal.objects.get(name=name)
         signal_result = SignalResult.objects.create(
             name=signal.name,
-            type=signal.type,
-            price=signal.price,
-            source=signal.source,
+            type=signal_type,
+            price=price,
+            source=source,
             signal=signal,
             price_change=price_change,
         )

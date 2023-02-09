@@ -4,12 +4,12 @@ from .models import Signal, SignalResult, Marathon, Setting
 
 @admin.register(Signal)
 class SettingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'type', 'price', 'source', 'date',)
+    list_display = ('id', 'name', 'type', 'price', 'date',)
 
 
 @admin.register(SignalResult)
 class DealAdmin(admin.ModelAdmin):
-    list_display = ('id', 'signal', 'name', 'type', 'price', 'price_change', 'source', 'date',)
+    list_display = ('id', 'name', 'type', 'price', 'price_change', 'date',)
 
 
 @admin.register(Marathon)

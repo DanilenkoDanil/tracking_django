@@ -13,7 +13,6 @@ class Signal(models.Model):
 
 
 class SignalResult(models.Model):
-    signal = models.ForeignKey(Signal, models.CASCADE)
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=10)
     price = models.FloatField(default=0)
